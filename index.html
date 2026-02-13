@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Valentine’s Day, Hunaid 💖</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Courier New", monospace;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #ffd6e0 0%, #ff99c8 40%, #f2e8cf 100%);
+      color: #3d2b3d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .retro-card {
+      background: #fff7fb;
+      border: 4px solid #ff8fab;
+      border-radius: 18px;
+      box-shadow: 0 12px 0 #d76a8c, 0 16px 30px rgba(0, 0, 0, 0.2);
+      width: 95%;
+      max-width: 700px;
+      padding: 24px 26px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .retro-card::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 2px dashed #ff4d6d;
+      border-radius: 12px;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .header {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 18px;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      color: #ff4d6d;
+      text-shadow: 1px 1px 0 #fff, 2px 2px 0 #d1495b;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .header .sub {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #d1495b;
+    }
+
+    .cute-icons {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .teddy-gif {
+      width: 90px;
+      height: 90px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid #ffb3c6;
+      background: #ffe6f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+    }
+
+    .teddy-gif img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .question-wrapper {
+      margin-top: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .question-wrapper h2 {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+      color: #7f1d1d;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    button.option-btn {
+      border: none;
+      outline: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: #ff8fab;
+      color: #3d2b3d;
+      cursor: pointer;
+      font-size: 0.98rem;
+      font-weight: 600;
+      box-shadow: 0 4px 0 #d76a8c;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+
+    button.option-btn:hover {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #d76a8c;
+      background: #ffb3c6;
+    }
+
+    #noBtn {
+      position: relative;
+    }
+
+    /* Letter page */
+    .letter-page {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+      margin-top: 8px;
+    }
+
+    .letter-title {
+      font-size: 1.6rem;
+      color: #be123c;
+      text-shadow: 1px 1px 0 #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .letter-title span.emoji {
+      font-size: 2rem;
+    }
+
+    .retro-letter {
+      margin-top: 4px;
+      background: #f2e8cf;
+      border-radius: 10px;
+      border: 2px solid #d4a373;
+      padding: 18px 20px;
+      max-height: 360px;
+      overflow-y: auto;
+      text-align: left;
+      width: 100%;
+      max-width: 620px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+      font-size: 0.96rem;
+      line-height: 1.5;
+      position: relative;
+    }
+
+    .retro-letter::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border-radius: 8px;
+      border: 1px dashed rgba(0, 0, 0, 0.08);
+      pointer-events: none;
+    }
+
+    .retro-letter p {
+      margin-bottom: 10px;
+    }
+
+    .retro-letter p:last-child {
+      margin-bottom: 0;
+    }
+
+    .good-decision {
+      font-weight: 700;
+      color: #7f1d1d;
+      margin-bottom: 4px;
+    }
+
+    /* Letter page buttons row (Go back + Click Me) */
+    .letter-buttons {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .back-btn,
+    .click-me-btn {
+      background: #ffe4e6;
+      color: #7f1d1d;
+      border-radius: 999px;
+      padding: 8px 16px;
+      border: 2px solid #fda4af;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .click-me-btn {
+      background: #ff8fab;
+      color: #3d2b3d;
+      border-color: #ff4d6d;
+    }
+
+    /* Yes page */
+    .sad-page {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sad-emoji {
+      font-size: 3rem;
+    }
+
+    .sad-text {
+      font-size: 1.1rem;
+      color: #7f1d1d;
+    }
+
+    /* Confetti canvas */
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 1.7rem;
+      }
+      .question-wrapper h2 {
+        font-size: 1.1rem;
+      }
+      button.option-btn {
+        width: 100%;
+        max-width: 260px;
+      }
+      .retro-letter {
+        max-height: 320px;
+      }
+      .letter-buttons {
+        flex-direction: column;
+      }
+      .back-btn,
+      .click-me-btn {
+        width: 100%;
+        max-width: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Letter page music -->
+  <audio id="bgAudio" loop>
+    <source src="song.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Yes page music -->
+  <audio id="fieldingAudio" loop>
+    <source src="fielding.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div class="retro-card">
+    <div class="header">
+      <h1>Happy Valentine’s Day, Hunaid 💘</h1>
+      <div class="sub">for my favorite person</div>
+      <div class="cute-icons">
+        <div class="teddy-gif">
+          <img
+            src="data:image/png;base64,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"
+            alt="Cute teddy"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Main question page -->
+    <div class="question-wrapper" id="questionPage">
+      <h2 id="questionText">Do u like talking to me? 🥺</h2>
+      <div class="button-row">
+        <button id="loveBtn" class="option-btn">Absolutely love it 💖</button>
+        <button id="yesBtn" class="option-btn">Yes</button>
+        <button id="noBtn" class="option-btn">No</button>
+      </div>
+    </div>
+
+    <!-- Yes page -->
+    <div class="sad-page" id="sadPage">
+      <div class="sad-emoji">😈🔪</div>
+      <div class="sad-text">Abb to Feilding set 😈🔪</div>
+      <button class="back-btn" id="backFromSad">Go back</button>
+    </div>
+
+    <!-- Letter page -->
+    <div class="letter-page" id="letterPage">
+      <div class="letter-title">
+        <span class="emoji">🎉</span>
+        <span>Good decision, Hunaid!</span>
+      </div>
+      <div class="retro-letter">
+        <p class="good-decision">Dear Hunaid 💖,</p>
+        <p>
+          I honestly never imagined that we would be talking like this today. We stayed together for two whole years during our JEE preparation, sitting in the same space, sharing notes, stress, and silent glances… yet neither of us had the courage to confess what was quietly growing between us. And now look at us 🥹✨ I’m so, so glad that I gathered the courage to message you that day. It changed everything and now you have become one of my favorite person 💖
+        </p>
+        <p>
+          Even though we’re far from each other right now, distance doesn’t really matter to me. What I feel for you isn’t measured in kilometers. I like you so much — more than I can properly explain 💕 You make my days softer and my nights calmer.
+        </p>
+        <p>
+          And that gift… you didn’t have to do that at all, but the fact that you searched for it so thoughtfully makes me blush every single time I think about it 🙈💝 I really wanted to send you something too, but aapki environmental problems 😭 still, it’s okay. I’ll always be sending you endless good vibes and love straight from my heart ❤️✨
+        </p>
+        <p>
+          No matter what happens, I’ll always be there for you — supporting you, cheering for you, choosing you. Happy Valentine’s Day, my favorite person 💌
+        </p>
+        <p>
+          Forever &lt;3
+        </p>
+      </div>
+
+      <div class="letter-buttons">
+        <button class="back-btn" id="backFromLetter">Go back</button>
+        <button class="click-me-btn" id="clickMeBtn">Click Me ❤️</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Confetti
+    const canvas = document.getElementById("confettiCanvas");
+    const ctx = canvas.getContext("2d");
+    let confettiPieces = [];
+    let confettiActive = false;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function createConfetti() {
+      confettiPieces = [];
+      const colors = ["#ff4d6d", "#ff8fab", "#ffd6e0", "#f2e8cf", "#c4f1be"];
+      for (let i = 0; i < 220; i++) {
+        confettiPieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          size: 5 + Math.random() * 6,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          speed: 2 + Math.random() * 3,
+          tilt: Math.random() * 2,
+          tiltAngle: Math.random() * Math.PI
+        });
+      }
+      confettiActive = true;
+      requestAnimationFrame(drawConfetti);
+      setTimeout(() => {
+        confettiActive = false;
+      }, 10000);
+    }
+
+    function drawConfetti() {
+      if (!confettiActive) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        return;
+      }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confettiPieces.forEach((p) => {
+        p.y += p.speed;
+        p.tiltAngle += 0.05;
+        p.x += Math.sin(p.tiltAngle);
+        if (p.y > canvas.height) {
+          p.y = -10;
+          p.x = Math.random() * canvas.width;
+        }
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x, p.y, p.size, p.size * 0.6);
+      });
+      requestAnimationFrame(drawConfetti);
+    }
+
+    // Audio control
+    const letterAudio = document.getElementById("bgAudio");
+    const fieldingAudio = document.getElementById("fieldingAudio");
+
+    function playLetterMusic() {
+      if (letterAudio) {
+        letterAudio.currentTime = 0;
+        letterAudio.play().catch(() => {});
+      }
+    }
+    function stopLetterMusic() {
+      if (letterAudio) letterAudio.pause();
+    }
+
+    function playFieldingMusic() {
+      if (fieldingAudio) {
+        fieldingAudio.currentTime = 0;
+        fieldingAudio.play().catch(() => {});
+      }
+    }
+    function stopFieldingMusic() {
+      if (fieldingAudio) fieldingAudio.pause();
+    }
+
+    // Buttons & pages
+    const loveBtn = document.getElementById("loveBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const questionPage = document.getElementById("questionPage");
+    const letterPage = document.getElementById("letterPage");
+    const sadPage = document.getElementById("sadPage");
+    const backFromSad = document.getElementById("backFromSad");
+    const backFromLetter = document.getElementById("backFromLetter");
+    const clickMeBtn = document.getElementById("clickMeBtn");
+
+    loveBtn.addEventListener("click", () => {
+      createConfetti();
+      stopFieldingMusic();
+      playLetterMusic();
+      questionPage.style.display = "none";
+      sadPage.style.display = "none";
+      letterPage.style.display = "flex";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      stopLetterMusic();
+      playFieldingMusic();
+      questionPage.style.display = "none";
+      letterPage.style.display = "none";
+      sadPage.style.display = "flex";
+    });
+
+    backFromSad.addEventListener("click", () => {
+      stopFieldingMusic();
+      sadPage.style.display = "none";
+      questionPage.style.display = "block";
+    });
+
+    backFromLetter.addEventListener("click", () => {
+      stopLetterMusic();
+      letterPage.style.display = "none";
+      questionPage.style.display = "block";
+    });
+
+    // Click Me -> redirect to video page
+    clickMeBtn.addEventListener("click", () => {
+      stopLetterMusic();
+      window.location.href = "video.html";
+    });
+
+    // "No" button runs away, but stays near cursor
+    function moveNoButtonNearCursor(mouseX, mouseY) {
+      const btnRect = noBtn.getBoundingClientRect();
+      const offsetDistance = 120;
+      const angle = Math.random() * Math.PI * 2;
+
+      let newX = mouseX + Math.cos(angle) * offsetDistance;
+      let newY = mouseY + Math.sin(angle) * offsetDistance;
+
+      const padding = 10;
+      const maxX = window.innerWidth - btnRect.width - padding;
+      const maxY = window.innerHeight - btnRect.height - padding;
+
+      newX = Math.min(Math.max(newX, padding), maxX);
+      newY = Math.min(Math.max(newY, padding), maxY);
+
+      noBtn.style.position = "fixed";
+      noBtn.style.left = newX + "px";
+      noBtn.style.top = newY + "px";
+      noBtn.style.zIndex = "1000";
+    }
+
+    document.addEventListener("mousemove", (e) => {
+      const rect = noBtn.getBoundingClientRect();
+      const distance = Math.hypot(
+        e.clientX - (rect.left + rect.width / 2),
+        e.clientY - (rect.top + rect.height / 2)
+      );
+      if (distance < 80) {
+        moveNoButtonNearCursor(e.clientX, e.clientY);
+      }
+    });
+  </script>
+</body>
+</html>
